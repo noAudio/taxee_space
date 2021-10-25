@@ -18,3 +18,6 @@ taxee_client/*.js
 taxee_client/*.js_
 taxee_client/*.js.deps
 taxee_client/*.js.map
+
+# Config files
+*/.vscode/
