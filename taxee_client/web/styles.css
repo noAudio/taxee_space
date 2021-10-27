@@ -12,17 +12,18 @@ html, body {
 .flex-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 
 .flex-column {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .hide {
-  display: none;
+  display: none!important;
 }
 
 /* Elements */
@@ -31,19 +32,23 @@ html, body {
   text-align: center;
 }
 
-.navbar {
+.floating-search {
   padding: 3%;
+  width: 300px;
 }
 
 .search {
+  box-sizing: border-box;
   border-radius: 6px;
-  padding: 1%;
+  padding: 1% 5%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: inherit;
 }
 
 .searchbox {
   border: 0;
   padding: 5%;
+  width: inherit;
   font-size: 18px;
   outline: none;
   background-color: inherit;
@@ -52,4 +57,43 @@ html, body {
 .icon {
   cursor: pointer;
   font-size: 18px;
+  width: 10%;
+}
+
+.search-inputs {
+  width: 80%;
+}
+
+.search-results {
+  margin-top: -1%;
+  padding: 3% 0 0 0;
+}
+
+.result {
+  /* padding: 0 5%; */
+  width: 100%;
+  justify-content: unset!important;
+  box-sizing: border-box;
+}
+
+.result:hover {
+  background-color: rgb(224, 224, 224);
+  cursor: pointer;
+}
+
+.distance {
+  padding: 0 0 0 4%;
+  font-size: 10px;
+  width: 10%;
+  text-align: center;
+  color: gray;
+}
+
+.system-name {
+  width: 90%;
+  padding: 0 4%;
+}
+
+.navbar {
+  justify-content: space-between;
 }
