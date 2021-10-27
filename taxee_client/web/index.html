@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="scaffolded-by" content="https://github.com/dart-lang/sdk">
-    <title>taxee_client</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="main.dart.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="scaffolded-by" content="https://github.com/dart-lang/sdk">
+  <title>Taxee</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/b5ebe5b56a.js" crossorigin="anonymous"></script>
+  <script defer src="main.dart.js"></script>
 </head>
 
 <body>
+  <nav class="navbar flex-row">
+    <div class="search flex-row">
+      <i class="fas fa-chevron-down icon"></i>
+      <div class="search-inputs flex-column">
+        <input type="text" name="search" id="system-searchbox" class="searchbox" placeholder="Type in a system name"
+          autofocus>
+        <input type="text" name="origin" id="origin-searchbox" class="searchbox hide"
+          placeholder="Type in a start system">
+        <input type="text" name="destination" id="destination-searchbox" class="searchbox hide"
+          placeholder="Type in a destination">
+      </div>
+      <i class="fas fa-exchange-alt icon"></i>
+    </div>
+  </nav>
 
-  <div id="output"></div>
+  <div id="output">
+  </div>
 
 </body>
+
 </html>

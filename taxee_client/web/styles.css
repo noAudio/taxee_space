@@ -8,7 +8,48 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Utility classes */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.hide {
+  display: none;
+}
+
+/* Elements */
 #output {
   padding: 20px;
   text-align: center;
+}
+
+.navbar {
+  padding: 3%;
+}
+
+.search {
+  border-radius: 6px;
+  padding: 1%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.searchbox {
+  border: 0;
+  padding: 5%;
+  font-size: 18px;
+  outline: none;
+  background-color: inherit;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 18px;
 }
