@@ -4,6 +4,6 @@
     {
         public string StationID { get; set; }
         public string StationName { get; set; }
-        public int SystemID { get; set; }
+        public long SystemID { get; set; }
     }
 }
