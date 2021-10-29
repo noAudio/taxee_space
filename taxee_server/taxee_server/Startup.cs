@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using taxee_server.Models;
 
 namespace taxee_server
 {
@@ -28,6 +30,8 @@ namespace taxee_server
         {
 
             services.AddControllers();
+            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContextPool<Data.TaxeeDbContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "taxee_server", Version = "v1" });
@@ -54,6 +58,16 @@ namespace taxee_server
             {
                 endpoints.MapControllers();
             });
+
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<Data.TaxeeDbContext>();
+                if (!context.Systems.Any())
+                {
+                    var seeder = new Data.Seeder(context);
+                    seeder.LoadSystemData();
+                }
+            }
         }
     }
 }
