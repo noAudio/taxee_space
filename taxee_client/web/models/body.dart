@@ -3,9 +3,9 @@ class Body {
   String name;
   String systemID;
 
-  Body(
-    this.bodyID,
-    this.name,
-    this.systemID,
-  );
+  Body({
+    required this.bodyID,
+    required this.name,
+    required this.systemID,
+  });
 }
