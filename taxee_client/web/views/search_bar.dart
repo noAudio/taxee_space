@@ -8,6 +8,7 @@ class SearchBar {
       querySelector('#destination-searchbox') as TextInputElement;
   var expandButton = querySelector("#expand-search") as Element;
   var exchangeInputs = querySelector("#exchange-search") as Element;
+  var resultsPanel = querySelector('#results-panel') as DivElement;
 
   void expandSearch(Event event) {
     defaultSearchBar.classes.toggleAll(['hide']);
@@ -23,5 +24,20 @@ class SearchBar {
 
     originSearchBar.value = destinationSystem;
     destinationSearchBar.value = originSystem;
+  }
+
+  void nilResults(Event event) {
+    List<String> searchTerms = [];
+
+    // TODO get searchbox contents and append to list of search terms
+
+    if (searchTerms.isNotEmpty) {
+      resultsPanel.classes.remove('hide');
+      resultsPanel.children
+        ..clear()
+        ..add(ParagraphElement()
+          ..text = "No matching results found"
+          ..classes.addAll(['nil-results']));
+    }
   }
 }
