@@ -8,6 +8,12 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
+nav {
+  position: relative;
+  z-index: 1;
+  background-color: black;
+}
+
 /* Utility classes */
 .flex-row {
   display: flex;
@@ -35,6 +41,7 @@ html, body {
 .floating-search {
   padding: 3%;
   width: 300px;
+  background-color: black;
 }
 
 .search {
@@ -43,6 +50,7 @@ html, body {
   padding: 1% 5%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: inherit;
+  background-color: white;
 }
 
 .searchbox {
@@ -65,8 +73,13 @@ html, body {
 }
 
 .search-results {
-  margin-top: -1%;
+  margin-top: -3%;
   padding: 3% 0 0 0;
+  z-index: 1;
+}
+
+.search-area {
+  z-index: 2;
 }
 
 .result {
@@ -101,4 +114,13 @@ html, body {
 
 .navbar {
   justify-content: space-between;
+}
+
+.map {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  background-color: black;
 }
