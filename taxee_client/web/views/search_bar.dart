@@ -30,8 +30,9 @@ class SearchBar {
   }
 
   void populateResults(Event event) {
-    var matchingSystems = <Element>[];
+    var target = event.target as TextInputElement;
 
+    var matchingSystems = <Element>[];
     var data = [];
 
     for (System system in data) {
@@ -50,12 +51,13 @@ class SearchBar {
       );
     }
 
-    if (matchingSystems.isNotEmpty) {
+    if (matchingSystems.isNotEmpty && target.value != '') {
       resultsPanel.classes.remove('hide');
       resultsPanel.children
         ..clear()
         ..addAll(matchingSystems);
-    } else if (defaultSearchBar.value == '') {
+    } else if (target.value == '' || target.value == null) {
+      resultsPanel.children.clear();
       resultsPanel.classes.addAll(['hide']);
     } else {
       resultsPanel.classes.remove('hide');
