@@ -21,6 +21,10 @@ nav {
   align-items: center;
 }
 
+.transparent {
+  background-color: transparent;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -41,7 +45,6 @@ nav {
 .floating-search {
   padding: 3%;
   width: 300px;
-  background-color: black;
 }
 
 .search {
