@@ -58,16 +58,6 @@ namespace taxee_server
             {
                 endpoints.MapControllers();
             });
-
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetService<Data.TaxeeDbContext>();
-                if (!context.Systems.Any())
-                {
-                    var seeder = new Data.Seeder(context);
-                    seeder.LoadSystemData();
-                }
-            }
         }
     }
 }
