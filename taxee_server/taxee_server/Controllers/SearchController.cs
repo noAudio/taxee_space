@@ -3,21 +3,31 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using taxee_server.Data;
 using taxee_server.Models;
 
 namespace taxee_server.Controllers
 {
-    public class SearchController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class SearchController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly TaxeeDbContext _context;
+
+        public SearchController(TaxeeDbContext context)
         {
-            return View();
+            _context = context;
         }
 
-        [HttpGet]
-        public IEnumerable<SystemSearch> Single(string systemName)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Models.System>> Single(long id)
         {
-            throw new NotImplementedException(); //TODO Add search logic for single systems
+            var system = await _context.Systems.FindAsync(id);
+
+            if (system is null)
+                return NotFound();
+
+            return system;
         }
 
         [HttpGet]
