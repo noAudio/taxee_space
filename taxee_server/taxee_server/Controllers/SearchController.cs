@@ -31,9 +31,27 @@ namespace taxee_server.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<SystemSearch> LiveSearch(string partialName)
+        public async Task<ActionResult<List<SystemSearch>>> LiveSearch(string partialName)
         {
-            throw new NotImplementedException();
+            var potentialSystems = _context.Systems.Where(star => star.name.Contains(partialName)).Take(5);
+
+            try
+            {
+                var results = potentialSystems.Select(
+                    star => new SystemSearch { 
+                        SystemID = star.SystemID, 
+                        Name = star.name 
+                    }).ToList();
+                if (results is null)
+                    return NotFound(new List<string> { "No matching systems found." });
+
+                return results;
+            }
+            catch (MySqlConnector.MySqlException)
+            {
+                return NotFound(new List<string> { "Could not load systems on time." });
+            }
+
         }
     }
 }
