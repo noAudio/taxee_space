@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace taxee_server.Models
 {
+    [Index(nameof(name))]
     public class System
     {
         public long SystemID { get; set; }
