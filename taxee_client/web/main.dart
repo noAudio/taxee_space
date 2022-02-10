@@ -1,5 +1,6 @@
-import 'dart:html';
+import 'package:angular/angular.dart';
+import 'package:taxee_client/app_component.template.dart' as ng;
 
 void main() {
-  querySelector('#output')?.text = 'Your Dart app is running.';
+  runApp(ng.AppComponentNgFactory);
 }
