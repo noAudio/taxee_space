@@ -70,7 +70,9 @@ class _NavAreaState extends State<NavArea> {
                 width: 450,
                 decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(6)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(6),
+                      topRight: Radius.circular(6)),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black38,
@@ -150,27 +152,7 @@ class _NavAreaState extends State<NavArea> {
                   ),
                 ),
               ),
-              Container(
-                width: 450,
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SystemResult(
-                      distance: '144ly',
-                      systemName: 'Mainani',
-                    ),
-                    SystemResult(
-                      distance: '200ly',
-                      systemName: 'Manah',
-                    ),
-                    SystemResult(
-                      distance: '230ly',
-                      systemName: 'Manabush',
-                    ),
-                  ],
-                ),
-              ),
+              ResultsPanel(),
             ],
           ),
           const IconButton(
@@ -180,6 +162,48 @@ class _NavAreaState extends State<NavArea> {
             mouseCursor: SystemMouseCursors.click,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ResultsPanel extends StatelessWidget {
+  ResultsPanel({
+    Key? key,
+  }) : super(key: key);
+  final _results = <SystemResult>[
+    const SystemResult(
+      distance: '124ly',
+      systemName: 'Mainani',
+    ),
+    const SystemResult(
+      distance: '200ly',
+      systemName: 'Manah',
+    ),
+    const SystemResult(
+      distance: '230ly',
+      systemName: 'Manabush',
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 450,
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(6), bottomRight: Radius.circular(6)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black38,
+              blurRadius: 10,
+              offset: Offset(0, 15),
+            )
+          ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: _results,
       ),
     );
   }
@@ -251,4 +275,8 @@ class SearchBar extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> getResults() async {
+  const path = '';
 }
